@@ -1,0 +1,11 @@
+/*
+
+!.gitignore
+
+!.storybook
+!src
+
+!package.json
+!tsconfig.json
+!vite.config.ts
+!README.md
