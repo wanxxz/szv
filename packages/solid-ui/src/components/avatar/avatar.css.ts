@@ -2,7 +2,10 @@ import { type RecipeVariants, recipe } from '@vanilla-extract/recipes'
 import openProps from 'open-props'
 
 const variants = recipe({
-  base: {},
+  base: {
+    height: openProps.sizeRelative10,
+    width: openProps.sizeRelative10
+  },
   variants: {},
   defaultVariants: {}
 })

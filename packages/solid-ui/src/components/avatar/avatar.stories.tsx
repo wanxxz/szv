@@ -1,23 +1,37 @@
 import { type Meta, type StoryObj } from '@storybook/html'
 import { type ComponentProps } from 'solid-js'
-import { Avatar, type AvatarProps } from './avatar'
-import { AvatarFallback } from './avatar-fallback'
-import { AvatarImage } from './avatar-image'
+import { Avatar } from './avatar'
+import { AvatarFallback, type AvatarFallbackProps } from './avatar-fallback'
+import { AvatarImage, type AvatarImageProps } from './avatar-image'
+import { AvatarProvider } from './avatar-provider'
 
-type Story = StoryObj<AvatarProps>
-
-export const Default: Story = {
-  args: {}
-}
-
-export default {
+const meta = {
   title: 'Components/Avatar',
-  component: Avatar,
-  subcomponents: { AvatarImage, AvatarFallback },
-  render: args => (
-    <Avatar {...args}>
-      <AvatarFallback>404</AvatarFallback>
-      <AvatarImage src="" />
+  decorators: [
+    Story => (
+      <AvatarProvider>
+        <Story />
+      </AvatarProvider>
+    )
+  ]
+} as Meta<ComponentProps<typeof Avatar>>
+
+const AvatarImageStory: StoryObj<AvatarImageProps> = {
+  render: () => (
+    <Avatar>
+      <AvatarImage src="https://avatars.githubusercontent.com/u/72271288" />
     </Avatar>
   )
-} as Meta<ComponentProps<typeof Avatar>>
+}
+const AvatarFallbackStory: StoryObj<AvatarFallbackProps> = {
+  render: () => (
+    <Avatar>
+      <AvatarImage src="" />
+      <AvatarFallback>404</AvatarFallback>
+    </Avatar>
+  )
+}
+
+export { AvatarFallbackStory as AvatarFallback, AvatarImageStory as AvatarImage }
+
+export default meta

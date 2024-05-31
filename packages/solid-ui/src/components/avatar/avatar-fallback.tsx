@@ -1,17 +1,21 @@
 import clsx from 'clsx'
-import { splitProps, type JSX, type ParentComponent } from 'solid-js'
+import { Show, splitProps, useContext, type JSX, type ParentComponent } from 'solid-js'
 import { variants, type Variants } from './avatar-fallback.css'
+import { AvatarContext } from './avatar-provider'
 
 type AvatarFallbackProps = Variants & JSX.HTMLAttributes<HTMLDivElement> & {}
 
 const AvatarFallback: ParentComponent<AvatarFallbackProps> = props => {
+  const [context, updateContext] = useContext(AvatarContext)
   const [local, others] = splitProps(props, ['children', 'class'])
 
   return (
-    <div class={clsx(variants(), local.class)} {...others}>
-      {local.children}
-    </div>
+    <Show when={context.loadingStatus === 'error'}>
+      <div class={clsx(variants(), local.class)} {...others}>
+        {local.children}
+      </div>
+    </Show>
   )
 }
 
-export { AvatarFallback }
+export { AvatarFallback, type AvatarFallbackProps }

@@ -1,25 +1,24 @@
 import clsx from 'clsx'
-import { Show, createSignal, splitProps, type JSX, type ParentComponent } from 'solid-js'
+import { Show, splitProps, useContext, type Component, type JSX } from 'solid-js'
 import { variants, type Variants } from './avatar-image.css'
+import { AvatarContext } from './avatar-provider'
 
 type AvatarImageProps = Variants & JSX.ImgHTMLAttributes<HTMLImageElement> & {}
 
-const AvatarImage: ParentComponent<AvatarImageProps> = props => {
-  const [loadingStatus, setLoadingStatus] = createSignal<'idle' | 'loaded' | 'error'>('idle')
-  const [local, others] = splitProps(props, ['children', 'class'])
+const AvatarImage: Component<AvatarImageProps> = props => {
+  const [context, updateContext] = useContext(AvatarContext)
+  const [local, others] = splitProps(props, ['class'])
 
   const image = new Image()
-  image.onload = () => setLoadingStatus('loaded')
-  image.onerror = () => setLoadingStatus('error')
+  image.onload = () => updateContext({ loadingStatus: 'loaded' })
+  image.onerror = () => updateContext({ loadingStatus: 'error' })
   image.src = props.src as never
 
   return (
-    <Show when={loadingStatus() === 'loaded'}>
-      <img class={clsx(variants(), local.class)} {...others}>
-        {local.children}
-      </img>
+    <Show when={context.loadingStatus === 'loaded'}>
+      <img class={clsx(variants(), local.class)} {...others} />
     </Show>
   )
 }
 
-export { AvatarImage }
+export { AvatarImage, type AvatarImageProps }
