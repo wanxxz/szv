@@ -1,5 +1,6 @@
 import clsx from 'clsx'
 import { ChevronRight } from 'lucide-solid'
+import openProps from 'open-props'
 import { splitProps, type JSX, type ParentComponent } from 'solid-js'
 import { variants, type Variants } from './breadcrumb-separator.css'
 
@@ -10,9 +11,9 @@ const BreadcrumbSeparator: ParentComponent<BreadcrumbSeparatorProps> = props => 
 
   return (
     <li role="presentation" aria-hidden="true" class={clsx(variants(), local.class)} {...others}>
-      {local.children ?? <ChevronRight />}
+      {local.children ?? <ChevronRight size={openProps.sizeRelative7} />}
     </li>
   )
 }
 
-export { BreadcrumbSeparator, BreadcrumbSeparatorProps }
+export { BreadcrumbSeparator, type BreadcrumbSeparatorProps }

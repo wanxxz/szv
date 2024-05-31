@@ -2,7 +2,9 @@ import { recipe, type RecipeVariants } from '@vanilla-extract/recipes'
 import openProps from 'open-props'
 
 const variants = recipe({
-  base: {},
+  base: {
+    fontSize: openProps.fontSize0
+  },
   variants: {},
   defaultVariants: {}
 })

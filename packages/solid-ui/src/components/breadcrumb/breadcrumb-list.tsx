@@ -14,4 +14,4 @@ const BreadcrumbList: ParentComponent<BreadcrumbListProps> = props => {
   )
 }
 
-export { BreadcrumbList, BreadcrumbListProps }
+export { BreadcrumbList, type BreadcrumbListProps }
