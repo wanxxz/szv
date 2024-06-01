@@ -2,7 +2,11 @@ import { recipe, type RecipeVariants } from '@vanilla-extract/recipes'
 import openProps from 'open-props'
 
 const variants = recipe({
-  base: {},
+  base: {
+    display: 'flex',
+    flexDirection: 'column',
+    padding: openProps.size5
+  },
   variants: {},
   defaultVariants: {}
 })
