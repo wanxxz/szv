@@ -1,6 +1,7 @@
 import { globalStyle } from '@vanilla-extract/css'
+import openProps from 'open-props'
 
 globalStyle('body', {
-  fontFamily: 'sans-serif',
+  fontFamily: openProps.fontSans,
   margin: 0
 })
