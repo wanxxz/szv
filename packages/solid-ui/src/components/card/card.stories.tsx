@@ -9,7 +9,6 @@ import { CardFooter } from './card-footer'
 
 const meta = {
   title: 'Components/Card',
-  tags: ['autodocs'],
   component: Card
 } as Meta<ComponentProps<typeof Card>>
 

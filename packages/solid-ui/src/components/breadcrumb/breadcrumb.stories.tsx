@@ -10,8 +10,7 @@ import { BreadcrumbSeparator } from './breadcrumb-separator'
 
 const meta = {
   title: 'Components/Breadcrumb',
-  component: Breadcrumb,
-  tags: ['autodocs']
+  component: Breadcrumb
 } as Meta<ComponentProps<typeof Breadcrumb>>
 
 const BreadcrumbStory: StoryObj<ComponentProps<typeof Breadcrumb>> = {
