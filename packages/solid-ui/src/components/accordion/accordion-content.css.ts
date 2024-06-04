@@ -4,7 +4,8 @@ import openProps from 'open-props'
 const variants = recipe({
   base: {
     overflow: 'hidden',
-    fontSize: openProps.fontSize0
+    fontSize: openProps.fontSize0,
+    paddingBottom: openProps.sizeRelative7
   },
   variants: {},
   defaultVariants: {}

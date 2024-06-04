@@ -5,7 +5,8 @@ const variants = recipe({
   base: {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
+    width: '100%',
     paddingInline: 0,
     paddingBlock: openProps.sizeRelative5,
     border: 'none',

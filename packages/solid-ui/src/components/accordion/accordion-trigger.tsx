@@ -18,7 +18,7 @@ const AccordionTrigger: ParentComponent<AccordionTriggerProps> = props => {
       {...accordion().getItemTriggerProps({ value: accordionItem.value })}
       {...others}
     >
-      {local.children}
+      <span>{local.children}</span>
       <AccordionTriggerIndicator />
     </button>
   )

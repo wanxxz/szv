@@ -3,7 +3,9 @@ import openProps from 'open-props'
 
 const variants = recipe({
   base: {
-    borderBottomWidth: openProps.borderSize1
+    borderBottomWidth: openProps.borderSize1,
+    borderBottomStyle: 'solid',
+    borderBottomColor: openProps.gray3
   },
   variants: {},
   defaultVariants: {}
