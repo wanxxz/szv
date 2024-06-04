@@ -1,3 +1,3 @@
-# solidjs + zagjs + vanilla-extract
+# solidjs + zagjs + vanilla-extract + open-props
 
 opinionated solidjs ui components, under development, slowly copying styles from shadcn/ui.
