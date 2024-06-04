@@ -8,14 +8,15 @@ const variants = recipe({
       '--shadow-color': openProps.shadowColor,
       '--shadow-strength': openProps.shadowStrength
     },
-    width: '100%',
     gap: openProps.sizeRelative7,
     borderWidth: openProps.borderSize1,
     borderStyle: 'solid',
     borderColor: openProps.gray3,
-    padding: openProps.sizeRelative7,
+    borderRadius: openProps.radius2,
+    padding: openProps.size4,
     boxShadow: openProps.shadow2,
-    backgroundColor: openProps.gray0
+    backgroundColor: openProps.gray0,
+    transform: 'translate(-50%,-50%)'
   },
   variants: {},
   defaultVariants: {}

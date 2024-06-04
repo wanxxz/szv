@@ -6,7 +6,7 @@ const variants = recipe({
     position: 'fixed',
     inset: 0,
     zIndex: 50,
-    backgroundColor: `hsl(${openProps.gray8Hsl} / 80%)`
+    backgroundColor: `hsl(${openProps.gray9Hsl} / 80%)`
   },
   variants: {},
   defaultVariants: {}
