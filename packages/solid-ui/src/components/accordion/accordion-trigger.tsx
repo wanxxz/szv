@@ -1,10 +1,9 @@
 import clsx from 'clsx'
-import { Match, Switch, splitProps, type JSX, type ParentComponent } from 'solid-js'
+import { splitProps, type JSX, type ParentComponent } from 'solid-js'
 import { useAccordionItem } from './accordion-item-provider'
 import { useAccordion } from './accordion-provider'
+import { AccordionTriggerIndicator } from './accordion-trigger-indicator'
 import { variants, type Variants } from './accordion-trigger.css'
-import { ChevronDown, ChevronUp } from 'lucide-solid'
-import openProps from 'open-props'
 
 type AccordionTriggerProps = Variants & JSX.ButtonHTMLAttributes<HTMLButtonElement> & {}
 
@@ -20,14 +19,7 @@ const AccordionTrigger: ParentComponent<AccordionTriggerProps> = props => {
       {...others}
     >
       {local.children}
-      <Switch>
-        <Match when={accordion().getItemState({ value: accordionItem.value }).expanded}>
-          <ChevronUp size={openProps.sizeRelative8} />
-        </Match>
-        <Match when={!accordion().getItemState({ value: accordionItem.value }).expanded}>
-          <ChevronDown />
-        </Match>
-      </Switch>
+      <AccordionTriggerIndicator />
     </button>
   )
 }
