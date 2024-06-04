@@ -4,8 +4,8 @@ import openProps from 'open-props'
 const variants = recipe({
   base: {
     position: 'absolute',
-    right: openProps.size4,
-    top: openProps.size4,
+    right: openProps.size3,
+    top: openProps.size3,
     border: 'none',
     background: 'none',
     display: 'block',
