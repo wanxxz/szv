@@ -13,7 +13,13 @@ const variants = recipe({
       accent: {},
       primary: {},
       secondary: {},
-      negative: {}
+      negative: {},
+      icon: {
+        padding: 'unset',
+        borderRadius: 'unset',
+        borderWidth: 'unset',
+        fontFamily: 'unset'
+      }
     },
     fill: {
       true: {

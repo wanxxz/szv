@@ -1,5 +1,7 @@
 import { type Meta, type StoryObj } from '@storybook/html'
+import { CircleX } from 'lucide-solid'
 import { type ComponentProps } from 'solid-js'
+import { Button } from '../button'
 import { Dialog } from './dialog'
 import { DialogBackdrop } from './dialog-backdrop'
 import { DialogCloseTrigger } from './dialog-close-trigger'
@@ -16,13 +18,15 @@ const meta = {
 const DialogStory: StoryObj<ComponentProps<typeof Dialog>> = {
   render: () => (
     <Dialog>
-      <DialogTrigger>open</DialogTrigger>
+      <DialogTrigger component={Button}>open</DialogTrigger>
       <DialogBackdrop />
       <DialogPositioner>
         <DialogContent>
           <DialogTitle>title</DialogTitle>
           <DialogDescription>description</DialogDescription>
-          <DialogCloseTrigger>close</DialogCloseTrigger>
+          <DialogCloseTrigger component={Button} variant="icon">
+            <CircleX />
+          </DialogCloseTrigger>
         </DialogContent>
       </DialogPositioner>
     </Dialog>
