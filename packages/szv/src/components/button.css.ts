@@ -1,12 +1,22 @@
+import { createVar } from '@vanilla-extract/css'
 import { recipe, type RecipeVariants } from '@vanilla-extract/recipes'
 import openProps from 'open-props'
+
+const backgroundColor = createVar()
+const filter = createVar()
 
 const variants = recipe({
   base: {
     padding: `${openProps.sizeRelative2} ${openProps.sizeRelative5}`,
     borderRadius: openProps.radius4,
     borderWidth: 0,
-    fontFamily: openProps.fontSans
+    fontFamily: openProps.fontSans,
+    selectors: {
+      '&:is(:hover, :focus)': {
+        cursor: 'pointer',
+        filter: filter
+      }
+    }
   },
   variants: {
     variant: {
@@ -18,12 +28,18 @@ const variants = recipe({
         padding: 'unset',
         borderRadius: 'unset',
         borderWidth: 'unset',
-        fontFamily: 'unset'
+        fontFamily: 'unset',
+        height: openProps.sizeRelative7,
+        width: openProps.sizeRelative7
       }
     },
     fill: {
       true: {
-        color: openProps.gray0
+        backgroundColor: backgroundColor,
+        color: openProps.gray0,
+        vars: {
+          [filter]: `brightness(1.05)`
+        }
       }
     },
     outline: {
@@ -51,15 +67,22 @@ const variants = recipe({
   defaultVariants: { variant: 'accent', fill: true, outline: false, size: 'm' },
   compoundVariants: [
     { variants: { variant: 'secondary', fill: true }, style: {} },
-
-    { variants: { variant: 'accent', fill: true }, style: { backgroundColor: openProps.blue7 } },
-    { variants: { variant: 'primary', fill: true }, style: { backgroundColor: openProps.gray10 } },
+    { variants: { variant: 'accent', fill: true }, style: { vars: { [backgroundColor]: openProps.blue7 } } },
+    { variants: { variant: 'primary', fill: true }, style: { vars: { [backgroundColor]: openProps.gray10 } } },
     {
       variants: { variant: 'secondary', fill: true },
-      style: { backgroundColor: openProps.gray2, color: openProps.gray12 }
+      style: { vars: { [backgroundColor]: openProps.gray2 }, color: openProps.gray12 }
     },
-    { variants: { variant: 'negative', fill: true }, style: { backgroundColor: openProps.red7 } },
-
+    { variants: { variant: 'negative', fill: true }, style: { vars: { [backgroundColor]: openProps.red7 } } },
+    {
+      variants: { variant: 'icon', fill: true },
+      style: {
+        color: openProps.gray12,
+        vars: {
+          [backgroundColor]: openProps.gray3
+        }
+      }
+    },
     { variants: { variant: 'accent', outline: true }, style: { color: openProps.blue7, borderColor: openProps.blue7 } },
     {
       variants: { variant: 'primary', outline: true },

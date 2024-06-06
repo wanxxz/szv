@@ -1,21 +1,19 @@
 import clsx from 'clsx'
-import { splitProps, type JSX, type ParentComponent, type ValidComponent } from 'solid-js'
-import { Dynamic } from 'solid-js/web'
+import { splitProps, type JSX, type ParentProps, type ValidComponent } from 'solid-js'
+import { Polymorphic, type PolymorphicProps } from '../polymorphic'
 import { variants, type Variants } from './dialog-close-trigger.css'
 import { useDialog } from './dialog-provider'
 
-type DialogCloseTriggerProps = Variants &
-  JSX.ButtonHTMLAttributes<HTMLButtonElement> & {
-    component?: ValidComponent
-  }
+type DialogCloseTriggerProps = JSX.ButtonHTMLAttributes<HTMLButtonElement> & ParentProps & Variants & {}
 
-const DialogCloseTrigger: ParentComponent<DialogCloseTriggerProps> = props => {
+const DialogCloseTrigger = <T extends ValidComponent = 'button'>(
+  props: PolymorphicProps<T, DialogCloseTriggerProps>
+) => {
   const dialog = useDialog()
-  const [local, others] = splitProps(props, ['class', 'component'])
+  const [local, others] = splitProps(props, ['class'])
 
   return (
-    <Dynamic
-      component={local.component ?? 'button'}
+    <Polymorphic<DialogCloseTriggerProps>
       class={clsx(variants(), local.class)}
       {...dialog().closeTriggerProps}
       {...others}

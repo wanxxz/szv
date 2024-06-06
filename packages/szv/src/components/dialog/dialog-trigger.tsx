@@ -1,21 +1,18 @@
 import clsx from 'clsx'
-import { splitProps, type JSX, type ParentComponent, type ValidComponent } from 'solid-js'
-import { Dynamic } from 'solid-js/web'
+import { splitProps, type JSX, type ParentProps, type ValidComponent } from 'solid-js'
+import { Polymorphic, PolymorphicProps } from '../polymorphic'
 import { useDialog } from './dialog-provider'
 import { variants, type Variants } from './dialog-trigger.css'
 
-type DialogTriggerProps = Variants &
-  JSX.ButtonHTMLAttributes<HTMLButtonElement> & {
-    component?: ValidComponent
-  }
+type DialogTriggerProps = JSX.ButtonHTMLAttributes<HTMLButtonElement> & ParentProps & Variants & {}
 
-const DialogTrigger: ParentComponent<DialogTriggerProps> = props => {
+const DialogTrigger = <T extends ValidComponent = 'button'>(props: PolymorphicProps<T, DialogTriggerProps>) => {
   const dialog = useDialog()
-  const [local, others] = splitProps(props, ['class', 'component'])
+  const [local, others] = splitProps(props, ['class', 'as'])
 
   return (
-    <Dynamic
-      component={local.component ?? 'button'}
+    <Polymorphic<DialogTriggerProps>
+      as={local.as ?? 'button'}
       class={clsx(variants(), local.class)}
       {...dialog().triggerProps}
       {...others}
