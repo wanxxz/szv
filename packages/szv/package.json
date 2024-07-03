@@ -9,10 +9,7 @@
     }
   },
   "scripts": {
-    "build": "vite build",
-    "lint": "npx tsc",
-    "start:storybook": "storybook dev",
-    "build:storybook": "storybook build"
+    "build": "vite build"
   },
   "peerDependencies": {
     "@solid-primitives/props": "^3.1.11",
